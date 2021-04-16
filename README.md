@@ -5,7 +5,13 @@ Currently supports multiple rooms and bot commands.
 
 ## Usage
 
-Requires netcat / telnet.
+Requires netcat / telnet clients.
+
+Start server using
+
+> node index.js
+
+Open new terminals then:
 
 Mac / Linux
 
