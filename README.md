@@ -17,6 +17,10 @@ Mac / Linux
 
 > nc localhost 3000
 
+OR
+
+> telnet localhost 3000
+
 Windows
 
 > since microsoft telnet is shit, use putty or some netcat port
