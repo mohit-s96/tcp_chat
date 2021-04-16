@@ -32,4 +32,7 @@ server.on("connection", function (sock) {
       );
     }
   });
+  sock.on("end", () => {
+    fnsInstance.removeFromPool(sock);
+  });
 });

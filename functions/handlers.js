@@ -96,11 +96,26 @@ class ChatRoomFns {
 
   static rejectRoomJoin(data, sock) {
     // console.log(data.slice(0, -1).toString(), sock.displayName.toString());
-    if (data.slice(0, -1).toString() !== sock.displayName.toString()) {
-      sock.write(
-        "That room name wan't found. Please select a valid name to join a room\n"
-      );
+    if (sock.displayName) {
+      if (data.slice(0, -1).toString() !== sock.displayName.toString()) {
+        sock.write(
+          "That room name wan't found. Please select a valid name to join a room\n"
+        );
+      }
     }
+  }
+
+  removeFromPool(sock) {
+    if (typeof sock.currentRoomId === "number") {
+      this.rooms.forEach((x) => {
+        if (x.roomId === sock.currentRoomId) {
+          x.participants -= 1;
+        }
+      });
+    }
+    this.sockets = this.sockets.filter(
+      (x) => x.displayName !== sock.displayName
+    );
   }
 }
 exports.ChatRoomFns = ChatRoomFns;
